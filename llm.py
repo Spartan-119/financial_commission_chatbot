@@ -1,22 +1,14 @@
-import os
-from dotenv import load_dotenv
-load_dotenv()
-
-# tag::llm[]
 # Create the LLM
+
+import streamlit as st
 from langchain_openai import ChatOpenAI
-
-llm = ChatOpenAI(
-    openai_api_key=os.getenv('OPENAI_API_KEY'),
-    model_name="gpt-3.5-turbo"
-)
-# end::llm[]
-
-# tag::embedding[]
-# Create the Embedding model
 from langchain_openai import OpenAIEmbeddings
 
-embeddings = OpenAIEmbeddings(
-    openai_api_key=os.getenv('OPENAI_API_KEY')
+llm = ChatOpenAI(
+    openai_api_key=st.secrets["OPENAI_API_KEY"],
+    model=st.secrets["OPENAI_MODEL"],
 )
-# end::embedding[]
+
+embeddings = OpenAIEmbeddings(
+    openai_api_key=st.secrets["OPENAI_API_KEY"]
+)
