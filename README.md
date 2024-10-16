@@ -23,5 +23,5 @@ This project implements a chatbot for the Guernsey Financial Services Commission
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Spartan-119/gfsc_chatbot.git
    cd gfsc_chatbot
