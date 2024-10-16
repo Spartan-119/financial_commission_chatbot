@@ -1,4 +1,5 @@
 # GFSC Chatbot
+## 👉<u>[Click here to demo it.](https://gfsc-chatbot.streamlit.app/)</u>
 
 ![demo](demo.gif)
 
