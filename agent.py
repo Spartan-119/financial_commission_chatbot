@@ -1,3 +1,4 @@
+# fin
 from llm import llm
 from graph import graph
 from langchain_core.prompts import ChatPromptTemplate
@@ -10,6 +11,23 @@ from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain import hub
 from utils import get_session_id
 
+from tools.vector import find_chunk
+from tools.cypher import run_cypher
+
+def generate_response(user_input):
+    """
+    Create a handler that calls the Conversational agent
+    and returns a response to be rendered in the UI
+    """
+
+    response = chat_agent.invoke(
+        {"input": user_input},
+        {"configurable": {"session_id": get_session_id()}},)
+
+    return response['output']
+
+# __all__ = ['generate_response']
+
 chat_prompt = ChatPromptTemplate.from_messages(
     [
         ("system", "You are an expert on the Guernsey Financial Services Commission (GFSC) way to risk-based regulation providing information about it."),
@@ -17,15 +35,26 @@ chat_prompt = ChatPromptTemplate.from_messages(
     ]
 )
 
-movie_chat = chat_prompt | llm | StrOutputParser()
+kg_chat = chat_prompt | llm | StrOutputParser()
 
 tools = [
     Tool.from_function(
         name="General Chat",
-        description="For general chat not covered by other tools",
-        func=movie_chat.invoke,
+        description="For general knowledge graph chat not covered by other tools",
+        func=kg_chat.invoke,
+    ), 
+    Tool.from_function(
+        name="Lesson content search",
+        description="For when you need to find information in the lesson content",
+        func=find_chunk, 
+    ),
+    Tool.from_function(
+        name="Knowledge Graph information",
+        description="For when you need to find information about the entities and relationship in the knowledge graph",
+        func = run_cypher,
     )
 ]
+
 def get_memory(session_id):
     return Neo4jChatMessageHistory(session_id=session_id, graph=graph)
 
@@ -72,6 +101,7 @@ agent = create_react_agent(llm, tools, agent_prompt)
 agent_executor = AgentExecutor(
     agent=agent,
     tools=tools,
+    handle_parsing_errors=True,
     verbose=True
     )
 
@@ -81,15 +111,3 @@ chat_agent = RunnableWithMessageHistory(
     input_messages_key="input",
     history_messages_key="chat_history",
 )
-
-def generate_response(user_input):
-    """
-    Create a handler that calls the Conversational agent
-    and returns a response to be rendered in the UI
-    """
-
-    response = chat_agent.invoke(
-        {"input": user_input},
-        {"configurable": {"session_id": get_session_id()}},)
-
-    return response['output']
