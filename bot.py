@@ -4,7 +4,10 @@ from utils import write_message
 from agent import generate_response
 
 # Page Config
-st.set_page_config("GFSC", page_icon=":books:")
+st.set_page_config("GFSC", page_icon="logo.png")
+
+logo_path = "logo.png"  # Replace this with the path to your logo file
+st.image(logo_path, use_column_width=True, caption="GFSC Chatbot", output_format="auto")
 
 # Set up Session State
 if "messages" not in st.session_state:
