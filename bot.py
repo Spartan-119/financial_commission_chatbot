@@ -6,7 +6,7 @@ from agent import generate_response
 # Page Config
 st.set_page_config("GFSC", page_icon="logo.png")
 
-logo_path = "logo.png"  # Replace this with the path to your logo file
+logo_path = "logo.png" 
 st.image(logo_path, use_column_width=True, caption="GFSC Chatbot", output_format="auto")
 
 # Set up Session State
