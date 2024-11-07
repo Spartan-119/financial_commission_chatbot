@@ -36,7 +36,7 @@ All trademarks, logos, and brand names are the property of their respective owne
 
 ## Liability
 
-The creator(s) of this project disclaim any responsibility for harm, loss, or damage resulting from the use or misuse of any content within this repository. Users are solely responsible for their actions and any consequences that may arise from using the information or code provided here.
+The creator of this project disclaims any responsibility for harm, loss, or damage resulting from the use or misuse of any content within this repository. Users are solely responsible for their actions and any consequences that may arise from using the information or code provided here.
 
 ## No Warranty
 
@@ -48,7 +48,7 @@ By using this repository, you agree to indemnify and hold harmless the creator(s
 
 ## Changes and Updates
 
-The creator(s) reserve the right to modify, update, or remove any content in this repository at any time without prior notice.
+The creator reserves the right to modify, update, or remove any content in this repository at any time without prior notice.
 
 ## Governing Law
 
