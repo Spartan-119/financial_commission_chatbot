@@ -1,6 +1,6 @@
 # GFSC Chatbot
-## 👉<u>[Click here to play with it (deployed app).](https://gfsc-chatbot.streamlit.app/)</u>
-## 👉<u>[Click here to view the demo.](https://screenrec.com/share/iRXNsUFvxf)</u>
+
+## 👉<u>[Click here to view the demo.](https://drive.google.com/file/d/1FvtErLZu6HPWrHBV79D1PBI5QFyDgn2_/view?usp=sharing)</u>
 
 ![demo](demo.gif)
 
