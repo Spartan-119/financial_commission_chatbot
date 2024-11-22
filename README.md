@@ -1,4 +1,4 @@
-# GFSC Chatbot
+# A Financial Services Commission Chatbot
 
 ## 👉<u>[Click here to view the demo.](https://drive.google.com/file/d/1FvtErLZu6HPWrHBV79D1PBI5QFyDgn2_/view?usp=sharing)</u>
 
